@@ -41,3 +41,16 @@ class Game:
 
 
 new_game = Game()
+# created the game and the deck with cards
+
+# TODO
+# make a player, like we did with Deck
+# make a dealer, also like we did with Deck
+# play
+# shuffle deck
+# deal cards
+# player's turn (hit/stay)
+# calculate score from cards in hand
+# dealer's turn
+# calculate score from cards in hand
+# who won/lost/busted/21
