@@ -1,9 +1,12 @@
+import random
+
 SUITS = ['♥️', '♣️', '♠️', '♦️']
 RANKS = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K', 'A']
 
 
 class Card:
     def __init__(self, suit='🐕', rank=20):
+        # we can give default arguments here, which will be used if no argument is passed
         self.suit = suit
         self.rank = rank
 
@@ -24,6 +27,9 @@ class Deck:
             for rank in RANKS:
                 new_card = Card(suit, rank)
                 self.cards.append(new_card)
+
+    def shuffle(self):
+        random.shuffle(self.cards)
 
 
 class Player:
@@ -83,16 +89,33 @@ class Game:
             pot += input(int(('What is your bet')))
         return pot
 
+    def deal_cards(self):
+        self.setup()
+        self.deck.shuffle()
+        print(new_game.player)
+        # calls Player __str__ method
+        card = self.deck.cards.pop()
+        self.player.hand.append(card)
+        card = self.deck.cards.pop()
+        self.player.hand.append(card)
+        for card in new_game.player.hand:
+            print(card)
+
+        print(new_game.dealer)
+        # calls Dealer __str__ method
+        card = self.deck.cards.pop()
+        self.dealer.hand.append(card)
+        card = self.deck.cards.pop()
+        self.dealer.hand.append(card)
+        for card in new_game.dealer.hand:
+            print(card)
+
 
 new_game = Game()
 # calls the Game class's init method in line 54
-new_game.setup()
-print(new_game.player)
-# calls Player __str__ method
-print(new_game.player.hand)
-print(new_game.dealer)
-# calls Dealer __str__ method
-print(new_game.dealer.hand)
+new_game.deal_cards()
+
+# tells the game to tell its deck to shuffle itself
 
 # for card in new_game.deck.cards:
 #     print(card)
@@ -104,8 +127,8 @@ print(new_game.dealer.hand)
 # ✅ make a player, like we did with Deck
 # ✅ make a dealer, also like we did with Deck
 # shuffle deck
-# play
 # deal cards
+
 # player's turn (hit/stay)
 # calculate score from cards in hand
 # dealer's turn
